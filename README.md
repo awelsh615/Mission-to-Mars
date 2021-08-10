@@ -1,6 +1,8 @@
 # Mission to Mars
 ## Purpose
-The purpose of this project was to scrape the web for data related to the Mars Mission, and then display that data on a website.
+The purpose of this project was to scrape the web for data related to the Mars Mission, and then display that data on a website.  We scraped Mars news, JPL featured image, a table of Mars facts, and photos of Mars' hemispheres.  After scraping this information, it was saved to a MongoDB database.  Mongo is a non-SQL database more suited to storing information that is not necessarily in tabular form.  
+
+Finally, I stylized the website by italicizing the Scrape New Data button and resizing the bootstrap columns to show all four hemisphere images on one row.
 
 ## Resources
 **Data Sources:** 
@@ -24,8 +26,8 @@ I found this project (and this module) very difficult, and very time consuming. 
 - Bootstrap
 - Splinter
 
-## Site Images
+## Stylized Site
 
-![Top of Site](Resources/site_top.PNG)
+![Site](Resources/stylized_site.PNG)
 
-![Bottom of Site](Resources/site_bottom.PNG)
+
