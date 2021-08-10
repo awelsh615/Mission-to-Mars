@@ -123,8 +123,12 @@ def hemisphere_data(browser):
         hemispheres = {}
         pic = browser.find_by_tag('img.thumb')[i].click()
         hemispheres['title'] = browser.find_by_tag('h2').text
-        pic_url = browser.find_link_by_text('Original').first
-        hemispheres['url'] = pic_url['href']
+        html = browser.html
+        img_soup = soup(html, 'html.parser')
+        hemi_full = img_soup.find('img', class_='wide-image').get('src')
+        hemi_url = f'https://marshemispheres.com/{hemi_full}'
+        hemispheres['url'] = hemi_url
+    
         hemisphere_image_urls.append(hemispheres)
         browser.back()
     
