@@ -13,10 +13,6 @@ Finally, I stylized the website by italicizing the Scrape New Data button and re
 
 <br/>
 
-
-## Conclusion
-I found this project (and this module) very difficult, and very time consuming.  Interestingly, when my mars hemispheres finally appeared on my 'site', it was more gratifying than when I completed some simpler assignments.  I'm in no hurry to do web-scraping for a living, but I do find the whole concept more appealing than when I began this unit.
-
 **Software & Packages:**
 - Python 3.8.8
 - Jupyter notebook 6.4.0
@@ -25,6 +21,10 @@ I found this project (and this module) very difficult, and very time consuming. 
 - MongoDB
 - Bootstrap
 - Splinter
+
+## Conclusion
+I found this project (and this module) very difficult, and very time consuming.  Interestingly, when my mars hemispheres finally appeared on my 'site', it was more gratifying than when I completed some simpler assignments.  I'm in no hurry to do web-scraping for a living, but I do find the whole concept more appealing than when I began this unit.
+
 
 ## Stylized Site
 
