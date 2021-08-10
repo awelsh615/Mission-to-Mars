@@ -5,28 +5,33 @@ import pandas as pd
 import datetime as dt
 from webdriver_manager.chrome import ChromeDriverManager
 
-
+# -------------------------------------------------------------------------------
+# Scraping Function
+# -------------------------------------------------------------------------------
 def scrape_all():
     # Initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
     news_title, news_paragraph = mars_news(browser)
-
+    # hemisphere = hemisphere_data(browser)
     # Run all scraping functions and store results in a dictionary
     data = {
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
-        "last_modified": dt.datetime.now()
+        "last_modified": dt.datetime.now(),
+        "hemispheres": hemisphere_data(browser)
     }
 
     # Stop webdriver and return data
     browser.quit()
     return data
 
-
+# -------------------------------------------------------------------------------
+# Mars News Function
+# -------------------------------------------------------------------------------
 def mars_news(browser):
 
     # Scrape Mars News
@@ -54,7 +59,9 @@ def mars_news(browser):
 
     return news_title, news_p
 
-
+# -------------------------------------------------------------------------------
+# Featured Image Function
+# -------------------------------------------------------------------------------
 def featured_image(browser):
     # Visit URL
     url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
@@ -80,7 +87,10 @@ def featured_image(browser):
     img_url = f'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{img_url_rel}'
 
     return img_url
-
+    
+# -------------------------------------------------------------------------------
+# Mars Facts Function
+# -------------------------------------------------------------------------------
 def mars_facts():
     # Add try/except for error handling
     try:
@@ -96,6 +106,29 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
+
+# -------------------------------------------------------------------------------
+# Mars Hemispheres Function
+# -------------------------------------------------------------------------------
+def hemisphere_data(browser):
+    url = 'https://marshemispheres.com/'
+    browser.visit(url)
+
+    # 2. Create a list to hold the images and titles.
+    hemisphere_image_urls = []
+
+    # 3. Write code to retrieve the image urls and titles for each hemisphere.
+
+    for i in range(0,4):
+        hemispheres = {}
+        pic = browser.find_by_tag('img.thumb')[i].click()
+        hemispheres['title'] = browser.find_by_tag('h2').text
+        pic_url = browser.find_link_by_text('Original').first
+        hemispheres['url'] = pic_url['href']
+        hemisphere_image_urls.append(hemispheres)
+        browser.back()
+    
+    return hemisphere_image_urls
 
 if __name__ == "__main__":
 
