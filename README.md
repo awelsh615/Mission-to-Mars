@@ -7,4 +7,4 @@ Module 10
 
 ![Top of Site](Resources/site_top.PNG)
 
-![Bottom of Site](
+![Bottom of Site](Resources/site_bottom.PNG)
